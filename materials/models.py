@@ -7,6 +7,13 @@ class Course(models.Model):
     description = models.TextField(verbose_name='Описание курса', **NULLABLE)
     preview = models.ImageField(upload_to='images/preview_course/', **NULLABLE, verbose_name='Превью курса')
 
+    def __str__(self):
+        '''строковое отображение обьекта'''
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Курс'
+        verbose_name_plural = 'Курсы'
 
 class Lesson(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название урока')
@@ -18,8 +25,8 @@ class Lesson(models.Model):
 
     def __str__(self):
         '''строковое отображение обьекта'''
-        return f'{self.name}, {self.description}, {self.price}'
+        return f'{self.name}, {self.course}'
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
+        verbose_name = 'Урок'
+        verbose_name_plural = 'Уроки'

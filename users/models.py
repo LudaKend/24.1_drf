@@ -9,3 +9,14 @@ class User(AbstractUser):
     phone = models.CharField(max_length=30, verbose_name='Телефон', **NULLABLE)
     city = models.CharField(max_length=30, verbose_name='Город', **NULLABLE)
     avatar = models.ImageField(upload_to='images/avatar/', **NULLABLE, verbose_name='Аватар')
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        '''строковое отображение обьекта'''
+        return f'{self.email}'
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
